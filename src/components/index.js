@@ -2,6 +2,6 @@
 
 import Cards from './Cards/Cards';
 import CountryPicker from './CountryPicker/CountryPicker';
-import Chart from './Chart/Chart';
+import Charts from './Chart/Charts';
 
-export { Cards, CountryPicker, Chart };
+export { Cards, CountryPicker, Charts };

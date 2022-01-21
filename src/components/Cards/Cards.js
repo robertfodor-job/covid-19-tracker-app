@@ -2,7 +2,9 @@ import React from 'react';
 import { Card, CardContent, Typography, Grid } from '@mui/material';
 import CountUp from 'react-countup';
 // import cx from 'classNames';
+import cx from 'classnames';
 import styles from './Cards.module.css';
+// import classNames from 'classNames';
 
 const Cards = ({ covidData }) => {
   if (!covidData.confirmed) {
@@ -12,13 +14,13 @@ const Cards = ({ covidData }) => {
 
     return (
       <div className={styles.container}>
-        <Grid container spacing={3} justify="center">
+        <Grid container spacing={2} justifyContent="center">
           <Grid
             item
             component={Card}
             xs={12}
             md={3}
-            className={`${styles.card}, ${styles.infected}`}
+            className={cx(styles.card, styles.infected)}
           >
             <CardContent>
               <Typography color="textSecondary" gutterBottom>
@@ -45,7 +47,7 @@ const Cards = ({ covidData }) => {
             component={Card}
             xs={12}
             md={3}
-            className={`${styles.card}, ${styles.recovered}`}
+            className={cx(styles.card, styles.recovered)}
           >
             <CardContent>
               <Typography color="textSecondary" gutterBottom>
@@ -72,7 +74,7 @@ const Cards = ({ covidData }) => {
             component={Card}
             xs={12}
             md={3}
-            className={`${styles.card}, ${styles.deaths}`}
+            className={cx(styles.card, styles.deaths)}
           >
             <CardContent>
               <Typography color="textSecondary" gutterBottom>

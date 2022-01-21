@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import { Cards, Chart, CountryPicker } from './components';
+import { Cards, Charts, CountryPicker } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
+import coronaImage from './images/image.jpg';
 
 const App = () => {
   const [covidData, setCovidData] = useState({});
@@ -14,16 +15,23 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchData().then(res => {
-      setCovidData(res);
-    });
+    // fetchData().then(res => {
+    //   setCovidData(res);
+    // });
+
+    const data = async () => {
+      const response = await fetchData();
+      setCovidData(response);
+    };
+    data();
   }, []);
 
   return (
     <div className={styles.container}>
+      <img className={styles.image} src={coronaImage} alt="COVID-19" />
       <Cards covidData={covidData} />
       <CountryPicker handleCountryChange={handleCountryChange} />
-      <Chart country={country} covidData={covidData} />
+      <Charts country={country} covidData={covidData} />
     </div>
   );
 };
