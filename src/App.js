@@ -6,6 +6,12 @@ import { fetchData } from './api';
 
 const App = () => {
   const [covidData, setCovidData] = useState({});
+  const [country, setCountry] = useState('');
+
+  const handleCountryChange = country => {
+    fetchData(country).then(res => setCovidData(res));
+    setCountry(country);
+  };
 
   useEffect(() => {
     fetchData().then(res => {
@@ -16,8 +22,8 @@ const App = () => {
   return (
     <div className={styles.container}>
       <Cards covidData={covidData} />
-      <CountryPicker />
-      <Chart />
+      <CountryPicker handleCountryChange={handleCountryChange} />
+      <Chart country={country} covidData={covidData} />
     </div>
   );
 };

@@ -4,7 +4,8 @@ import { Line, Bar } from 'react-chartjs-2';
 import styles from './Chart.module.css';
 import Charts from 'chart.js/auto';
 
-const Chart = () => {
+const Chart = ({ country }) => {
+  console.log(country);
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ const Chart = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
   // const lineChart = dailyData.length ? (
 
